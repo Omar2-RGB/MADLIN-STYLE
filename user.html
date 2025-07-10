@@ -143,56 +143,6 @@
       box-shadow: 0 -7px 18px rgba(212,175,55,0.7);
       user-select: none;
     }
-    /* Scrollbar for categories */
-    .btn-category-container::-webkit-scrollbar {
-      height: 7px;
-    }
-    .btn-category-container::-webkit-scrollbar-thumb {
-      background: #b8860b;
-      border-radius: 10px;
-    }
-    .btn-category-container::-webkit-scrollbar-track {
-      background: #fff8dc;
-    }
-    /* Responsive */
-    @media (max-width: 480px) {
-      header {
-        font-size: 1.9rem;
-        padding: 1.5rem 1rem;
-      }
-      .btn-category {
-        padding: 0.6rem 1.2rem;
-        font-size: 1rem;
-      }
-      main {
-        gap: 1.3rem;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        padding: 0 0.8rem;
-      }
-      .product-card img {
-        height: 140px;
-      }
-      .product-info h3 {
-        font-size: 1.1rem;
-      }
-      .product-info p {
-        font-size: 0.9rem;
-        margin-bottom: 0.8rem;
-      }
-      .price {
-        font-size: 1.1rem;
-        margin-bottom: 0.8rem;
-      }
-      .btn-order {
-        font-size: 1rem;
-        padding: 0.7rem 1.1rem;
-        border-radius: 18px;
-      }
-      footer {
-        font-size: 0.9rem;
-        padding: 1rem;
-      }
-    }
   </style>
 </head>
 <body>
@@ -206,59 +156,13 @@
   </div>
 
   <main id="productsContainer" role="tabpanel" aria-live="polite">
-    <!-- منتجات تظهر هنا -->
+    <!-- المنتجات تظهر هنا -->
   </main>
 
   <footer>&copy; 2025 MADLIN STYLE | جميع الحقوق محفوظة</footer>
 
   <script>
-    const products = [
-      {
-        id: 1,
-        name: "قميص رجالي",
-        description: "قميص قطني عالي الجودة ومريح للارتداء اليومي.",
-        price: 120,
-        category: "clothes",
-        image: "https://via.placeholder.com/400x300?text=قميص+رجالي",
-        whatsapp: "https://wa.me/96551633360"
-      },
-      {
-        id: 2,
-        name: "سوار جلد",
-        description: "سوار يدوي أنيق مصمم بعناية ليكمل مظهرك.",
-        price: 50,
-        category: "accessories",
-        image: "https://via.placeholder.com/400x300?text=سوار+جلد",
-        whatsapp: "https://wa.me/96551633360"
-      },
-      {
-        id: 3,
-        name: "سماعات بلوتوث",
-        description: "سماعات بتقنية حديثة لصوت نقي وعالي الجودة بدون أسلاك.",
-        price: 300,
-        category: "electronics",
-        image: "https://via.placeholder.com/400x300?text=سماعات+بلوتوث",
-        whatsapp: "https://wa.me/96551633360"
-      },
-      {
-        id: 4,
-        name: "بنطلون جينز",
-        description: "بنطلون جينز مريح وعصري يناسب كافة المناسبات.",
-        price: 150,
-        category: "clothes",
-        image: "https://via.placeholder.com/400x300?text=بنطلون+جينز",
-        whatsapp: "https://wa.me/96551633360"
-      },
-      {
-        id: 5,
-        name: "قلادة فضة",
-        description: "قلادة فضية أنيقة بتصميم يبرز جمالك.",
-        price: 100,
-        category: "accessories",
-        image: "https://via.placeholder.com/400x300?text=قلادة+فضة",
-        whatsapp: "https://wa.me/96551633360"
-      }
-    ];
+    const products = JSON.parse(localStorage.getItem("products")) || [];
 
     const categoryButtons = document.querySelectorAll('.btn-category');
     const productsContainer = document.getElementById('productsContainer');
