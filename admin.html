@@ -17,10 +17,12 @@
       color: white;
       padding: 1.5rem 2rem;
       text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
     header h1 {
       margin: 0;
-      font-size: 2rem;
+      font-size: 2.3rem;
+      letter-spacing: 2px;
     }
     .dashboard {
       max-width: 1000px;
@@ -48,7 +50,7 @@
       font-size: 1.2rem;
       color: #5a4a00;
       box-shadow: 0 6px 15px rgba(184,134,11,0.2);
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, background-color 0.3s;
       cursor: pointer;
     }
     .card:hover {
@@ -78,7 +80,7 @@
 <body>
 
   <header>
-    <h1>لوحة التحكم - MADLIN STYLE</h1>
+    <h1>لوحة تحكم المدير - MADLIN STYLE</h1>
   </header>
 
   <div class="dashboard">
@@ -87,10 +89,10 @@
     </div>
 
     <div class="cards">
-      <div class="card" onclick="goTo('products')">إدارة المنتجات</div>
-      <div class="card" onclick="goTo('categories')">إدارة الأقسام</div>
-      <div class="card" onclick="goTo('orders')">عرض الطلبات</div>
-      <div class="card" onclick="goTo('users')">إدارة المستخدمين</div>
+      <div class="card" onclick="goTo('products.html')">إدارة المنتجات</div>
+      <div class="card" onclick="goTo('categories.html')">إدارة الأقسام</div>
+      <div class="card" onclick="goTo('orders.html')">عرض الطلبات</div>
+      <div class="card" onclick="goTo('users.html')">إدارة المستخدمين</div>
     </div>
 
     <div class="logout">
@@ -99,19 +101,19 @@
   </div>
 
   <script>
-    // قراءة اسم المستخدم من التخزين المحلي (لو مخزن)
+    // تحميل اسم المستخدم
     const username = localStorage.getItem("username") || "المدير";
     document.getElementById("username").textContent = username;
 
-    function goTo(section) {
-      alert(`يتم الآن الانتقال إلى: ${section}`);
-      // لاحقاً تقدر تحط window.location.href = 'اسم_الصفحة.html';
+    // توجيه للصفحات
+    function goTo(page) {
+      window.location.href = page;
     }
 
     function logout() {
       localStorage.removeItem("username");
       alert("تم تسجيل الخروج!");
-      window.location.href = "login.html"; // غيرها حسب مسار صفحة الدخول
+      window.location.href = "index.html"; // غيرها لمسار صفحة الدخول عندك
     }
   </script>
 
