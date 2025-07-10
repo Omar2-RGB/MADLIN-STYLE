@@ -78,9 +78,10 @@
     <label>القسم:</label>
     <select id="category">
       <option value="">اختر القسم</option>
-      <option value="clothes">ملابس</option>
-      <option value="accessories">إكسسوارات</option>
-      <option value="electronics">إلكترونيات</option>
+      <option value="bags">قسم الشنط</option>
+      <option value="shoes">قسم الأحذية</option>
+      <option value="clothes">قسم الملابس</option>
+      <option value="accessories">قسم الإكسسوارات</option>
     </select>
     
     <label>صورة المنتج:</label>
@@ -121,6 +122,11 @@
     function renderProducts() {
       const tbody = document.querySelector("#productTable tbody");
       tbody.innerHTML = "";
+      if (products.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="6">لا توجد منتجات حالياً</td></tr>';
+        return;
+      }
+
       products.forEach((product, index) => {
         const row = `<tr>
           <td>${product.name}</td>
@@ -139,9 +145,10 @@
 
     function getCategoryName(key) {
       switch(key) {
-        case "clothes": return "ملابس";
-        case "accessories": return "إكسسوارات";
-        case "electronics": return "إلكترونيات";
+        case "bags": return "قسم الشنط";
+        case "shoes": return "قسم الأحذية";
+        case "clothes": return "قسم الملابس";
+        case "accessories": return "قسم الإكسسوارات";
         default: return "";
       }
     }
