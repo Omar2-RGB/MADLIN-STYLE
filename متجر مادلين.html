@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MADLIN STYLE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      margin: 0; padding: 0;
+      background-color: #fff;
+      color: #5a4a00;
+      scroll-behavior: smooth;
+    }
+    header {
+      background: linear-gradient(90deg, #d4af37, #b8860b);
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+      font-weight: 700;
+      font-size: 2.5rem;
+      user-select: none;
+      box-shadow: 0 6px 15px rgba(212,175,55,0.6);
+      letter-spacing: 2px;
+    }
+    .btn-category-container {
+      max-width: 1200px;
+      margin: 2rem auto 1rem;
+      padding: 0 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .btn-category {
+      background: #fff8dc;
+      color: #b8860b;
+      border-radius: 40px;
+      border: 3px solid transparent;
+      padding: 0.8rem 1.8rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 12px rgba(184,134,11,0.15);
+      user-select: none;
+    }
+    .btn-category:hover,
+    .btn-category.active {
+      background: #b8860b;
+      color: white;
+      border-color: #d4af37;
+      box-shadow: 0 12px 30px rgba(184,134,11,0.6);
+      transform: scale(1.12);
+    }
+    main {
+      max-width: 1200px;
+      margin: 0 auto 3rem;
+      padding: 0 1rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+    .product-card {
+      background: #fff8dc;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(212,175,55,0.3);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 45px rgba(212,175,55,0.6);
+    }
+    .product-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-bottom: 5px solid #b8860b;
+      transition: transform 0.3s ease;
+    }
+    .product-card:hover img {
+      transform: scale(1.05);
+    }
+    .product-info {
+      flex: 1;
+      padding: 1rem 1.2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .product-info h3 {
+      margin-bottom: 0.6rem;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #8b7500;
+      line-height: 1.2;
+    }
+    .product-info p {
+      font-size: 0.95rem;
+      color: #5a4a00;
+      margin-bottom: 1rem;
+      flex-grow: 1;
+      line-height: 1.4;
+    }
+    .price {
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: #d4af37;
+      margin-bottom: 1rem;
+    }
+    .btn-order {
+      background: linear-gradient(45deg, #d4af37, #b8860b);
+      color: white;
+      padding: 0.8rem 1.4rem;
+      border: none;
+      border-radius: 20px;
+      font-weight: 900;
+      font-size: 1.1rem;
+      text-align: center;
+      text-decoration: none;
+      box-shadow: 0 7px 20px rgba(212,175,55,0.6);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+    }
+    .btn-order:hover {
+      background: linear-gradient(45deg, #b8860b, #d4af37);
+      box-shadow: 0 10px 30px rgba(184,134,11,0.85);
+    }
+    footer {
+      background: linear-gradient(90deg, #b8860b, #d4af37);
+      color: white;
+      text-align: center;
+      padding: 1.5rem 1rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      box-shadow: 0 -7px 18px rgba(212,175,55,0.7);
+      user-select: none;
+    }
+    /* Scrollbar for categories */
+    .btn-category-container::-webkit-scrollbar {
+      height: 7px;
+    }
+    .btn-category-container::-webkit-scrollbar-thumb {
+      background: #b8860b;
+      border-radius: 10px;
+    }
+    .btn-category-container::-webkit-scrollbar-track {
+      background: #fff8dc;
+    }
+    /* Responsive */
+    @media (max-width: 480px) {
+      header {
+        font-size: 1.9rem;
+        padding: 1.5rem 1rem;
+      }
+      .btn-category {
+        padding: 0.6rem 1.2rem;
+        font-size: 1rem;
+      }
+      main {
+        gap: 1.3rem;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        padding: 0 0.8rem;
+      }
+      .product-card img {
+        height: 140px;
+      }
+      .product-info h3 {
+        font-size: 1.1rem;
+      }
+      .product-info p {
+        font-size: 0.9rem;
+        margin-bottom: 0.8rem;
+      }
+      .price {
+        font-size: 1.1rem;
+        margin-bottom: 0.8rem;
+      }
+      .btn-order {
+        font-size: 1rem;
+        padding: 0.7rem 1.1rem;
+        border-radius: 18px;
+      }
+      footer {
+        font-size: 0.9rem;
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>MADLIN STYLE</header>
+
+  <div class="btn-category-container" role="tablist" aria-label="أقسام المنتجات">
+    <button class="btn-category active" role="tab" aria-selected="true" data-category="all">الكل</button>
+    <button class="btn-category" role="tab" aria-selected="false" data-category="clothes">ملابس</button>
+    <button class="btn-category" role="tab" aria-selected="false" data-category="accessories">إكسسوارات</button>
+    <button class="btn-category" role="tab" aria-selected="false" data-category="electronics">إلكترونيات</button>
+  </div>
+
+  <main id="productsContainer" role="tabpanel" aria-live="polite">
+    <!-- منتجات تظهر هنا -->
+  </main>
+
+  <footer>&copy; 2025 MADLIN STYLE | جميع الحقوق محفوظة</footer>
+
+  <script>
+    const products = [
+      {
+        id: 1,
+        name: "قميص رجالي",
+        description: "قميص قطني عالي الجودة ومريح للارتداء اليومي.",
+        price: 120,
+        category: "clothes",
+        image: "https://via.placeholder.com/400x300?text=قميص+رجالي",
+        whatsapp: "https://wa.me/96551633360"
+      },
+      {
+        id: 2,
+        name: "سوار جلد",
+        description: "سوار يدوي أنيق مصمم بعناية ليكمل مظهرك.",
+        price: 50,
+        category: "accessories",
+        image: "https://via.placeholder.com/400x300?text=سوار+جلد",
+        whatsapp: "https://wa.me/96551633360"
+      },
+      {
+        id: 3,
+        name: "سماعات بلوتوث",
+        description: "سماعات بتقنية حديثة لصوت نقي وعالي الجودة بدون أسلاك.",
+        price: 300,
+        category: "electronics",
+        image: "https://via.placeholder.com/400x300?text=سماعات+بلوتوث",
+        whatsapp: "https://wa.me/96551633360"
+      },
+      {
+        id: 4,
+        name: "بنطلون جينز",
+        description: "بنطلون جينز مريح وعصري يناسب كافة المناسبات.",
+        price: 150,
+        category: "clothes",
+        image: "https://via.placeholder.com/400x300?text=بنطلون+جينز",
+        whatsapp: "https://wa.me/96551633360"
+      },
+      {
+        id: 5,
+        name: "قلادة فضة",
+        description: "قلادة فضية أنيقة بتصميم يبرز جمالك.",
+        price: 100,
+        category: "accessories",
+        image: "https://via.placeholder.com/400x300?text=قلادة+فضة",
+        whatsapp: "https://wa.me/96551633360"
+      }
+    ];
+
+    const categoryButtons = document.querySelectorAll('.btn-category');
+    const productsContainer = document.getElementById('productsContainer');
+
+    function displayProducts(category) {
+      productsContainer.innerHTML = '';
+      const filtered = category === 'all' ? products : products.filter(p => p.category === category);
+      if (filtered.length === 0) {
+        productsContainer.innerHTML = '<p style="text-align:center; color:#7b6a00; font-weight:600; padding:20px;">لا توجد منتجات في هذا القسم.</p>';
+        return;
+      }
+      filtered.forEach(product => {
+        const card = document.createElement('article');
+        card.className = 'product-card';
+        card.innerHTML = `
+          <img src="${product.image}" alt="${product.name}" />
+          <div class="product-info">
+            <h3>${product.name}</h3>
+            <p>${product.description}</p>
+            <div class="price">${product.price} د.ك</div>
+            <a href="${product.whatsapp}" target="_blank" class="btn-order" rel="noopener noreferrer" aria-label="اطلب ${product.name} عبر واتساب">اطلب عبر واتساب</a>
+          </div>
+        `;
+        productsContainer.appendChild(card);
+      });
+    }
+
+    categoryButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        categoryButtons.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+        displayProducts(btn.dataset.category);
+      });
+    });
+
+    displayProducts('all');
+  </script>
+</body>
+</html>

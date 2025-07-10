@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>لوحة تحكم المدير - MADLIN STYLE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      margin: 0;
+      background: #fffaf0;
+      color: #5a4a00;
+    }
+    header {
+      background: linear-gradient(to left, #d4af37, #b8860b);
+      color: white;
+      padding: 1.5rem 2rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+    .dashboard {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 2rem;
+    }
+    .welcome {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      color: #8b7500;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+    .card {
+      background-color: white;
+      border: 2px solid #d4af37aa;
+      padding: 1.5rem;
+      border-radius: 15px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #5a4a00;
+      box-shadow: 0 6px 15px rgba(184,134,11,0.2);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      background-color: #fff5dd;
+    }
+    .logout {
+      margin-top: 2rem;
+      text-align: center;
+    }
+    .logout button {
+      background-color: #b8860b;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .logout button:hover {
+      background-color: #a07000;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>لوحة التحكم - MADLIN STYLE</h1>
+  </header>
+
+  <div class="dashboard">
+    <div class="welcome">
+      مرحباً بك، <span id="username">المدير</span>
+    </div>
+
+    <div class="cards">
+      <div class="card" onclick="goTo('products')">إدارة المنتجات</div>
+      <div class="card" onclick="goTo('categories')">إدارة الأقسام</div>
+      <div class="card" onclick="goTo('orders')">عرض الطلبات</div>
+      <div class="card" onclick="goTo('users')">إدارة المستخدمين</div>
+    </div>
+
+    <div class="logout">
+      <button onclick="logout()">تسجيل الخروج</button>
+    </div>
+  </div>
+
+  <script>
+    // قراءة اسم المستخدم من التخزين المحلي (لو مخزن)
+    const username = localStorage.getItem("username") || "المدير";
+    document.getElementById("username").textContent = username;
+
+    function goTo(section) {
+      alert(`يتم الآن الانتقال إلى: ${section}`);
+      // لاحقاً تقدر تحط window.location.href = 'اسم_الصفحة.html';
+    }
+
+    function logout() {
+      localStorage.removeItem("username");
+      alert("تم تسجيل الخروج!");
+      window.location.href = "login.html"; // غيرها حسب مسار صفحة الدخول
+    }
+  </script>
+
+</body>
+</html>
