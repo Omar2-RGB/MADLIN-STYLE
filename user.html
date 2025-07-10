@@ -8,7 +8,7 @@
   <style>
     body {
       font-family: 'Cairo', sans-serif;
-      margin: 0; padding: 0;
+      margin: 0; padding: 30px;
       background-color: #fff;
       color: #5a4a00;
       scroll-behavior: smooth;
@@ -25,7 +25,7 @@
       letter-spacing: 2px;
     }
     .btn-category-container {
-      max-width: 1200px;
+      max-width: 1600px;
       margin: 2rem auto 1rem;
       padding: 0 1rem;
       display: flex;
@@ -57,7 +57,7 @@
       transform: scale(1.12);
     }
     main {
-      max-width: 1200px;
+      max-width: 1600px;
       margin: 0 auto 3rem;
       padding: 0 1rem;
       display: grid;
@@ -148,13 +148,13 @@
 <body>
   <header>MADLIN STYLE</header>
 
-<div class="btn-category-container" role="tablist" aria-label="أقسام المنتجات">
-  <button class="btn-category active" role="tab" aria-selected="true" data-category="all">الكل</button>
-  <button class="btn-category" role="tab" aria-selected="false" data-category="bags">قسم الشنط</button>
-  <button class="btn-category" role="tab" aria-selected="false" data-category="shoes">قسم الأحذية</button>
-  <button class="btn-category" role="tab" aria-selected="false" data-category="clothes">قسم الملابس</button>
-  <button class="btn-category" role="tab" aria-selected="false" data-category="accessories">قسم الإكسسوارات</button>
-</div>
+  <div class="btn-category-container" role="tablist" aria-label="أقسام المنتجات">
+    <button class="btn-category active" role="tab" aria-selected="true" data-category="all">الكل</button>
+    <button class="btn-category" role="tab" aria-selected="false" data-category="bags">قسم الشنط</button>
+    <button class="btn-category" role="tab" aria-selected="false" data-category="shoes">قسم الأحذية</button>
+    <button class="btn-category" role="tab" aria-selected="false" data-category="clothes">قسم الملابس</button>
+    <button class="btn-category" role="tab" aria-selected="false" data-category="accessories">قسم الإكسسوارات</button>
+  </div>
 
   <main id="productsContainer" role="tabpanel" aria-live="polite">
     <!-- المنتجات تظهر هنا -->
@@ -176,6 +176,7 @@
         return;
       }
       filtered.forEach(product => {
+        const whatsappLink = product.whatsapp || `https://wa.me/96551633360?text=مرحبا،%20أرغب%20بطلب%20منتج%20${encodeURIComponent(product.name)}`;
         const card = document.createElement('article');
         card.className = 'product-card';
         card.innerHTML = `
@@ -184,7 +185,7 @@
             <h3>${product.name}</h3>
             <p>${product.description}</p>
             <div class="price">${product.price} د.ك</div>
-            <a href="${product.whatsapp}" target="_blank" class="btn-order" rel="noopener noreferrer" aria-label="اطلب ${product.name} عبر واتساب">اطلب عبر واتساب</a>
+            <a href="${whatsappLink}" target="_blank" class="btn-order" rel="noopener noreferrer" aria-label="اطلب ${product.name} عبر واتساب">اطلب عبر واتساب</a>
           </div>
         `;
         productsContainer.appendChild(card);
