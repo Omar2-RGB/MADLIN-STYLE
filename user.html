@@ -8,7 +8,8 @@
   <style>
     body {
       font-family: 'Cairo', sans-serif;
-      margin: 0; padding: 30px;
+      margin: 0;
+      padding: 30px;
       background-color: #fff;
       color: #5a4a00;
       scroll-behavior: smooth;
@@ -25,7 +26,7 @@
       letter-spacing: 2px;
     }
     .btn-category-container {
-      max-width: 2000px;
+      width: 100%;
       margin: 2rem auto 1rem;
       padding: 0 1rem;
       display: flex;
@@ -57,11 +58,11 @@
       transform: scale(1.12);
     }
     main {
-      max-width: 2000px;
+      width: 100%;
       margin: 0 auto 3rem;
       padding: 0 1rem;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
     }
     .product-card {
@@ -80,7 +81,7 @@
     }
     .product-card img {
       width: 100%;
-      height: 180px;
+      height: 220px;
       object-fit: cover;
       border-bottom: 5px solid #b8860b;
       transition: transform 0.3s ease;
@@ -97,20 +98,20 @@
     }
     .product-info h3 {
       margin-bottom: 0.6rem;
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       font-weight: 800;
       color: #8b7500;
       line-height: 1.2;
     }
     .product-info p {
-      font-size: 0.95rem;
+      font-size: 1rem;
       color: #5a4a00;
       margin-bottom: 1rem;
       flex-grow: 1;
-      line-height: 1.4;
+      line-height: 1.5;
     }
     .price {
-      font-size: 1.25rem;
+      font-size: 1.3rem;
       font-weight: 900;
       color: #d4af37;
       margin-bottom: 1rem;
@@ -118,7 +119,7 @@
     .btn-order {
       background: linear-gradient(45deg, #d4af37, #b8860b);
       color: white;
-      padding: 0.8rem 1.4rem;
+      padding: 0.9rem 1.5rem;
       border: none;
       border-radius: 20px;
       font-weight: 900;
