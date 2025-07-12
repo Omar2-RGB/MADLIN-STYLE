@@ -29,34 +29,33 @@
       box-shadow: 0 6px 15px rgba(212,175,55,0.6);
       letter-spacing: 3px;
     }
- .btn-category-container {
-  width: 100%;
-  margin: 2rem auto 1rem;
-  padding: 0 10px; /* إضافة حواف جانبية */
-  display: flex;
-  justify-content: flex-start; /* نجعل الأزرار تبدأ من اليسار */
-  gap: 0.8rem; /* تقليل الفاصل بين الأزرار */
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  white-space: nowrap; /* منع الانكسار */
-  scrollbar-width: thin; /* للمتصفحات التي تدعم */
-}
-
-.btn-category {
-  flex-shrink: 0; /* منع تصغير الأزرار داخل flex */
-  background: #fff8dc;
-  color: #b8860b;
-  border-radius: 50px;
-  border: 3px solid transparent;
-  padding: 1rem 2.5rem;
-  font-weight: 900;
-  font-size: 1.3rem;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: all 0.3s ease;
-  box-shadow: 0 6px 14px rgba(184,134,11,0.15);
-  user-select: none;
-}
+    .btn-category-container {
+      width: 100%;
+      margin: 2rem auto 1rem;
+      padding: 0 10px;
+      display: flex;
+      justify-content: flex-start;
+      gap: 0.8rem;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      white-space: nowrap;
+      scrollbar-width: thin;
+    }
+    .btn-category {
+      flex-shrink: 0;
+      background: #fff8dc;
+      color: #b8860b;
+      border-radius: 50px;
+      border: 3px solid transparent;
+      padding: 1rem 2.5rem;
+      font-weight: 900;
+      font-size: 1.3rem;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 14px rgba(184,134,11,0.15);
+      user-select: none;
+    }
     .btn-category:hover,
     .btn-category.active {
       background: #b8860b;
@@ -206,45 +205,23 @@
   <footer>&copy; 2025 MADLIN STYLE | جميع الحقوق محفوظة</footer>
 
   <script>
-    const defaultProducts = [
-      {
-        name: "شنطة يد جلدية",
-        description: "شنطة يد عالية الجودة مصنوعة من الجلد الطبيعي.",
-        price: 40,
-        category: "bags",
-        image: "https://via.placeholder.com/600x400?text=شنطة+يد",
-        whatsapp: ""
-      },
-      {
-        name: "حذاء رياضي",
-        description: "حذاء رياضي مريح للمشي والجري.",
-        price: 30,
-        category: "shoes",
-        image: "https://via.placeholder.com/600x400?text=حذاء+رياضي",
-        whatsapp: ""
-      },
-      {
-        name: "قميص رجالي",
-        description: "قميص قطني أنيق يناسب كل المناسبات.",
-        price: 25,
-        category: "clothes",
-        image: "https://via.placeholder.com/600x400?text=قميص+رجالي",
-        whatsapp: ""
-      },
-      {
-        name: "سوار فضة",
-        description: "سوار فضة بسيط وجميل لجميع المناسبات.",
-        price: 15,
-        category: "accessories",
-        image: "https://via.placeholder.com/600x400?text=سوار+فضة",
-        whatsapp: ""
-      }
-    ];
-
-    const products = JSON.parse(localStorage.getItem("products")) || defaultProducts;
+    const API_URL = 'https://api.sheetbest.com/sheets/cfb2aa3d-2bf9-4184-877f-f1d55a611252';
 
     const categoryButtons = document.querySelectorAll('.btn-category');
     const productsContainer = document.getElementById('productsContainer');
+
+    let products = [];
+
+    async function fetchProducts() {
+      try {
+        const res = await fetch(API_URL);
+        products = await res.json();
+        displayProducts('all'); // عرض الكل أول ما تحمل الصفحة
+      } catch (error) {
+        console.error('خطأ في جلب البيانات:', error);
+        productsContainer.innerHTML = '<p style="color:red; text-align:center;">فشل تحميل المنتجات. حاول لاحقاً.</p>';
+      }
+    }
 
     function displayProducts(category) {
       productsContainer.innerHTML = '';
@@ -282,7 +259,7 @@
       });
     });
 
-    displayProducts('all');
+    fetchProducts();
   </script>
 </body>
 </html>
